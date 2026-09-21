@@ -55,7 +55,7 @@ workflow NFCORE_DEMO {
     )
 
     emit:
-    multiqc_report = DEMO.out.multiqc_report // channel: /path/to/multiqc_report.html
+    versions = DEMO.out.versions // channel: [ path(versions.yml) ]
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,6 +94,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        NFCORE_DEMO.out.multiqc_report,
+        channel.empty(),
     )
 }
